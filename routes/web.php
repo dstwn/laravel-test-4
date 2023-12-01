@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +19,14 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+Route::get('users', [UserController::class, 'index'])->name('users.index');
 
 // Task: profile functionality should be available only for logged-in users
 Route::group([
     'middleware' => ['auth'],
 ], function () {
-    Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
-    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 
