@@ -9,7 +9,9 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::with('user')->paginate();
+        //$tasks = Task::with('user')->paginate();
+        //task with no user
+        $tasks = Task::doesntHave('user')->paginate();
 
         return view('tasks.index', compact('tasks'));
     }
