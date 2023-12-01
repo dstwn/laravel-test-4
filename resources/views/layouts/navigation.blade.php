@@ -21,7 +21,6 @@
                         {{ __('Profile') }}
                     </x-nav-link>
                     @endauth
-                   
                 </div>
             </div>
 
